@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather advisor</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Righteous"
+    />
+</head>
+<body>
+    <div class="topnav">
+        <h1 class="title" >
+            Weather advisor
+            <img src="weather.svg">
+        </h1>
+        <form action="/submit" method="POST">
+            <button class="element button">Find</button>
+            <input type="text" class ="element search" placeholder="Search your city.." name="city">   
+        </form>
+    </div>
+    <% if(locals.city) {%>
+        <div class="container">
+            <div class="info">
+                <h2 class="city"><%= city %></h2>
+                <p class="line temp"><%= currentTemp %></p>
+                <p class="line unit">F</p>
+                <ul class="line infoLi">
+                    <ol>Status: <%= status %></ol>
+                    <ol>Wind: <%= windspeed %></ol>
+                    <ol>Humidity: <%= air %></ol>
+                </ul>
+            </div>
+            <div class="border">
+                <div class="board">
+                    <p class="advise"><%= adviseSentence %></p>
+                </div>
+            </div>
+        </div>
+    <% } else {%>
+        <div class="container">
+            <div class="border">
+                <div class="board">
+                    <p class="adise">Find your City</p>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>
